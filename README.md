@@ -111,7 +111,7 @@ Afterwards *Builder.exe* could embed the metadata in the target’s resources or
 
 ## Additional Considerations
 
-In this conceptual solution it is unsatisfactory that the user must manage not only the sections to be encrypted but also the invocation of the Tracer class. In a production-ready implementation (as i have used in my crackmes), this responsibility is delegated to a separate *Protector* application:
+In this conceptual solution it is unsatisfactory that the user must manage not only the sections to be encrypted but also the invocation of the *Tracer* class. In a production-ready implementation (as i have used in my crackmes), this responsibility is delegated to a separate *Protector* application:
 
 - **Crackme**
   - Within the Crackme code, only the sections intended for encryption need to be marked.
@@ -119,4 +119,4 @@ In this conceptual solution it is unsatisfactory that the user must manage not o
   - The Protector wraps the Crackme with a loader stub capable of loading the Crackme via manual mapping.
   - By loading the Crackme itself, the Protector gains full control and can apply the Tracer to the encrypted sections of the Crackme automatically.  
   
-  This design simplifies usage for the developer and centralizes protection responsibilities within the Protector component.
+  This design simplifies usage for the developer and centralizes protection responsibilities within the Protector application.
