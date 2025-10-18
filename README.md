@@ -16,6 +16,6 @@ For simplicity, this implementation operates on 16-byte blocks, but the underlyi
 
 ## Solution Overview
 
-### Example Project
+### Builder Project
 
-### Loader Project
+### JitDecrypter Project
