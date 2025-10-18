@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PEImage\PEImage.cpp">
+      <Filter>PEImage</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtectedCode\ProtectedCodeExecutor.cpp">
+      <Filter>ProtectedCode</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracer\BreakpointManager.cpp">
+      <Filter>Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracer\MemoryAccessor.cpp">
+      <Filter>Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracer\SectionInfo.cpp">
+      <Filter>Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracer\Tracer.cpp">
+      <Filter>Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtectedCode\Crc32.cpp">
+      <Filter>ProtectedCode</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="PEImage">
+      <UniqueIdentifier>{0c3971a7-a90a-445e-9f1d-25b901292f78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProtectedCode">
+      <UniqueIdentifier>{9f13f742-276a-4c5f-9f4b-ace514807065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tracer">
+      <UniqueIdentifier>{b0793cec-eada-4325-bcb3-ddc911f344fa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PEImage\PEImage.h">
+      <Filter>PEImage</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtectedCode\ProtectedCodeExecutor.h">
+      <Filter>ProtectedCode</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracer\BreakpointManager.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracer\MemoryAccessor.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracer\SectionInfo.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracer\Tracer.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtectedCode\Crc32.h">
+      <Filter>ProtectedCode</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="Tracer\ForceBreakpoint.asm">
+      <Filter>Tracer</Filter>
+    </MASM>
+  </ItemGroup>
+</Project>

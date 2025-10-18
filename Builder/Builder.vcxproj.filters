@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SectionEnryption\PEFile.cpp">
+      <Filter>SectionEnryption</Filter>
+    </ClCompile>
+    <ClCompile Include="SectionEnryption\FileWriter.cpp">
+      <Filter>SectionEnryption</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="SectionEnryption">
+      <UniqueIdentifier>{7a592e88-9272-435e-b27d-0500c1a5d386}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SectionEnryption\PEFile.h">
+      <Filter>SectionEnryption</Filter>
+    </ClInclude>
+    <ClInclude Include="SectionEnryption\FileWriter.h">
+      <Filter>SectionEnryption</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
