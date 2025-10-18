@@ -111,7 +111,7 @@ In this conceptual solution it is unsatisfactory that the user must manage not o
   - Within the *Target* code, only the sections intended for encryption need to be marked.
 - **Protector**
   - The *Protector* wraps the *Target* with a loader stub capable of loading the *Target* via manual mapping.
-  - By loading the *Target* itself, the *Protector* gains full control and can apply the *Tracer* to the encrypted sections of the *Target* automatically.  
+  - By loading the *Target* itself, the loader stub gains full control and can apply the *Tracer* to the encrypted sections of the *Target* automatically.  
   
   This design simplifies usage for the developer and centralizes protection responsibilities within the Protector application.
 
