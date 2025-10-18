@@ -3,7 +3,7 @@
 A just-in-time decrypter for Windows executables (x86 and x64) that is capable of single-instruction decryption of an encrypted code section at execution time.    
 
 **Keywords**:  
-Just-In-time Decrypter, Decrypter, Protector, Code Section, PE, Portable Executable, EXE, Windows
+Just-In-time Decrypter, Single-Instruction Decrypter, Decrypter, Protector, Code Section, PE, Portable Executable, EXE, Windows
 
 ## Motivation
 
