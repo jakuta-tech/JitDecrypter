@@ -1,6 +1,6 @@
 # Fatmike's Just-In-Time Decrypter
 
-A just-in-time decrypter for windows executables (x86 and x64) that performs code decryption on execution time of an encrypted code section.    
+A just-in-time decrypter for Windows executables (x86 and x64) that is capable of single-instruction decryption of an encrypted code section at execution time.    
 
 **Keywords**:  
 Just-In-time Decrypter, Decrypter, Protector, Code Section, PE, Portable Executable, EXE, Windows
