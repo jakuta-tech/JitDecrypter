@@ -20,7 +20,7 @@ private:
   void Initialize(SectionInfo* traceSection, SectionInfo* ignoreSection);
   void Unload();
 
-  void ApplyTraceInfo(SectionInfo* source, SectionInfo& target);
+  void ApplySectionInfo(SectionInfo* source, SectionInfo& target);
 
   static LONG WINAPI VectoredHandlerBreakPoint(struct _EXCEPTION_POINTERS* ExceptionInfo);
 

@@ -37,8 +37,8 @@ void Tracer::StopTracing()
 
 void Tracer::Initialize(SectionInfo* traceSection, SectionInfo* ignoreSection)
 {
-  ApplyTraceInfo(traceSection, _traceSection);
-  ApplyTraceInfo(ignoreSection, _ignoreSection);
+  ApplySectionInfo(traceSection, _traceSection);
+  ApplySectionInfo(ignoreSection, _ignoreSection);
 
   _isUnloaded = false;
   _breakpointManager = new BreakpointManager();
@@ -65,7 +65,7 @@ void Tracer::Unload()
   _ignoreSection.Clear();
 }
 
-void Tracer::ApplyTraceInfo(SectionInfo* source, SectionInfo& target)
+void Tracer::ApplySectionInfo(SectionInfo* source, SectionInfo& target)
 {
   target.SetSectionStart(source->GetSectionStart());
   target.SetSectionEnd(source->GetSectionEnd());
