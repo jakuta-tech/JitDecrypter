@@ -15,7 +15,7 @@ int main()
 
   std::cout << "Unprotected code : Calling protected code..." << std::endl;
 
-  // Tracing proteced section .prot (protected functions from .prot may be called)
+  // Tracing protected section .prot (protected methods from .prot may be called)
   Tracer::Instance().StartTracing(protectedSection, textSection);
   ProtectedCodeExecutor* executor = new ProtectedCodeExecutor();
   executor->EnterText();
@@ -23,7 +23,7 @@ int main()
 
   std::cout << "Unprotected code : Calling protected code again..." << std::endl;
 
-  // Tracing proteced section .prot (protected functions from .prot may be called)
+  // Tracing protected section .prot (protected methods from .prot may be called)
   Tracer::Instance().StartTracing(protectedSection, textSection);
   DWORD checksum = executor->GetCrc32();
   delete executor;
