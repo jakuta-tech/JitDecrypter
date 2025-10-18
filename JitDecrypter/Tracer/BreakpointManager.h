@@ -30,5 +30,4 @@ private:
   std::map<SIZE_T, BYTE> _breakpoints;
   bool _isMemoryBreakPointActive;
   bool _raisedBreakPointException;
-  DWORD _oldProtect;
 };

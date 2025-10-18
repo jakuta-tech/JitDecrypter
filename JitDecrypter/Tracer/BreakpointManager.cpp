@@ -8,7 +8,6 @@ BreakpointManager::BreakpointManager()
 {
   _isMemoryBreakPointActive = false;
   _raisedBreakPointException = false;
-  _oldProtect = 0;
 }
 
 BreakpointManager::~BreakpointManager()
@@ -81,7 +80,8 @@ bool BreakpointManager::HasBreakpoint(SIZE_T address)
 void BreakpointManager::SetMemoryBreakPoint(SIZE_T address, SIZE_T size)
 {
   _isMemoryBreakPointActive = true;
-  VirtualProtect((LPVOID)address, size, PAGE_GUARD | PAGE_EXECUTE_READWRITE, &_oldProtect);
+  DWORD oldProtect = 0;
+  VirtualProtect((LPVOID)address, size, PAGE_GUARD | PAGE_EXECUTE_READWRITE, &oldProtect);
 }
 
 void BreakpointManager::NotifyMemoryBreakPointRemoved()
