@@ -158,20 +158,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PEImage\PEImage.cpp" />
     <ClCompile Include="ProtectedCode\Crc32.cpp" />
     <ClCompile Include="ProtectedCode\ProtectedCodeExecutor.cpp" />
     <ClCompile Include="Tracer\BreakpointManager.cpp" />
     <ClCompile Include="Tracer\MemoryAccessor.cpp" />
+    <ClCompile Include="Tracer\PEImage.cpp" />
     <ClCompile Include="Tracer\SectionInfo.cpp" />
     <ClCompile Include="Tracer\Tracer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PEImage\PEImage.h" />
     <ClInclude Include="ProtectedCode\Crc32.h" />
     <ClInclude Include="ProtectedCode\ProtectedCodeExecutor.h" />
     <ClInclude Include="Tracer\BreakpointManager.h" />
     <ClInclude Include="Tracer\MemoryAccessor.h" />
+    <ClInclude Include="Tracer\PEImage.h" />
     <ClInclude Include="Tracer\SectionInfo.h" />
     <ClInclude Include="Tracer\Tracer.h" />
   </ItemGroup>

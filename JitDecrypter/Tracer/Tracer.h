@@ -13,6 +13,8 @@ public:
   bool StartTracing(SectionInfo* traceSection, SectionInfo* ignoreSection);
   void StopTracing();
 
+  SectionInfo* CreateSectionInfo(const char* sectionName, DWORD_PTR imageBase);
+
 private:
   Tracer();
   ~Tracer();

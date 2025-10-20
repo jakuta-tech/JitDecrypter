@@ -2,6 +2,7 @@
 #include "Tracer.h"
 #include "SectionInfo.h"
 #include "BreakpointManager.h"
+#include "PEImage.h"
 
 Tracer::Tracer()
 {
@@ -33,6 +34,24 @@ bool Tracer::StartTracing(SectionInfo* traceSection, SectionInfo* ignoreSection)
 void Tracer::StopTracing()
 {
   Unload();
+}
+
+SectionInfo* Tracer::CreateSectionInfo(const char* sectionName, DWORD_PTR imageBase)
+{
+  PEImage peImage(imageBase);
+  PIMAGE_SECTION_HEADER section = peImage.FindSection(sectionName);
+  if (section == nullptr) return nullptr;
+
+  SectionInfo* traceInfo = new SectionInfo();
+  DWORD_PTR sectionStart = imageBase + section->VirtualAddress;
+  DWORD_PTR sectionSize = section->Misc.VirtualSize;
+  DWORD_PTR sectionEnd = sectionStart + sectionSize - 1;
+
+  traceInfo->SetSectionStart(sectionStart);
+  traceInfo->SetSectionEnd(sectionEnd);
+  traceInfo->SetSectionSize(sectionSize);
+
+  return traceInfo;
 }
 
 void Tracer::Initialize(SectionInfo* traceSection, SectionInfo* ignoreSection)
