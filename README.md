@@ -56,11 +56,24 @@ This ensures that the instrumentation is preserved and the code executes as inte
 
 Once the target executable has been built, encryption is applied to the designated code sections (e.g., *.prot*) using an additional application.
 
+### Just-In-Time Decryption
+
+All components required for just-in-time decryption are encapsulated within the *Tracer* class. The functionality can be activated via the *StartTracing* method and deactivated using *StopTracing*. This approach minimizes the visible overhead within the actual source code logic.
+
+**StartTracing**
+
+- Activates tracing and allows the execution of protected code within a protected section.  
+  
+**StopTracing**
+
+- Deactivates tracing, disabling execution of protected code and allowing unprotected code to be executed again.
+
 ## Solution Overview
 
 ### Builder Project
 
-*Builder.exe* is an auxiliary application responsible for encrypting the *.prot* section after the target application has been built. It is configured to run automatically as a post-build event. Therefore, ensure that the solution is **rebuilt** after making changes to the code.
+*Builder.exe* is an auxiliary application responsible for encrypting the *.prot* section after the target application has been built. The encryption algorithm and key used in *Builder* must match those used in the decrypter implementation in the *JitDecrypter* project.  
+*Builder.exe* is configured to run automatically as a post-build event. Therefore, ensure that the solution is **rebuilt** after making changes to the code. The chosen enryption algortihm and key in the encrypter has to be the same in the decrypter implementation.
 
 ### JitDecrypter Project
 
@@ -80,6 +93,7 @@ The central component of the solution is the *Tracer* class. When activated, it 
 Tracer::Instance().StartTracing(protectedSection, textSection);
 ProtectedClass* protectedClass = new ProtectedClass();
 protectedClass->ProtectedMethod();
+delete protectedClass;
 Tracer::Instance().StopTracing();
 ```
 Explanation of the steps:
@@ -109,11 +123,12 @@ Afterwards *Builder.exe* could embed the metadata in the target’s resources or
 
 ## Additional Considerations
 
-In this conceptual solution it is unsatisfactory that the user must manage not only the sections to be encrypted but also the invocation of the *Tracer* class. In a production-ready implementation, this responsibility is delegated to a separate *Protector* application:
+In this conceptual solution it is unsatisfactory that the user must manage not only the sections to be encrypted but also the invocation of the *Tracer* class. In a production-ready implementation, this responsibility could be delegated to a separate *Protector* application:
 
-- **Target**
-  - Within the *Target* code, only the sections intended for encryption need to be marked.
-- **Protector**
+**Target**
+  - Within the *Target* code, only the sections intended for encryption need to be marked.  
+  
+**Protector**
   - The *Protector* wraps the *Target* with a loader stub capable of loading the *Target* via manual mapping.
   - By loading the *Target* itself, the loader stub gains full control and can apply the *Tracer* to the encrypted sections of the *Target* automatically.  
   
@@ -123,9 +138,10 @@ In this conceptual solution it is unsatisfactory that the user must manage not o
 
   As proof of concept these additional considerations were implemented in some of my crackmes:
   
-- crackmes.one
+**crackmes.one**
   - [Fatmike's Crackme #5](https://crackmes.one/crackme/66ca5b91b899a3b9dd02af52)
-  - [Fatmike's Crackme #7](https://crackmes.one/crackme/67814b594d850ac5f7dc4fc9)
-- crackmy.app
+  - [Fatmike's Crackme #7](https://crackmes.one/crackme/67814b594d850ac5f7dc4fc9)  
+  
+**crackmy.app**
   - [Fatmike's Crackme #5](https://crackmy.app/crackmes/fatmike-s-crackme-5-by-fatmike-46575)
   - [Fatmike's Crackme #7](https://crackmy.app/crackmes/fatmike-s-crackme-7-2025-2634)
