@@ -73,7 +73,7 @@ All components required for just-in-time decryption are encapsulated within the 
 ### Builder Project
 
 *Builder.exe* is an auxiliary application responsible for encrypting the *.prot* section after the target application has been built. The encryption algorithm and key used in *Builder* must match those used in the decrypter implementation in the *JitDecrypter* project.  
-*Builder.exe* is configured to run automatically as a post-build event. Therefore, ensure that the solution is **rebuilt** after making changes to the code. The chosen enryption algortihm and key in the encrypter has to be the same in the decrypter implementation.
+*Builder.exe* is configured to run automatically as a post-build event. Therefore, ensure that the solution is **rebuilt** after making changes to the code.
 
 ### JitDecrypter Project
 
