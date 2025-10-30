@@ -94,16 +94,20 @@ Once the target executable has been built, encryption is applied to the designat
 
 ### JitDecrypter Project
 
-This project contains the components required for **just-in-time (JIT) decryption** of code in the *.prot* section at execution time. It also supports the execution of code from standard, non-encrypted sections.  
-Additionally, it serves as both a demonstration and a proof of concept. As demonstration, the protected code contains the following code:
-- The user can input text
-- The user input is then processed to compute its CRC32 value
-
-Both functions are executed within the encrypted *.prot* section.  
+This project provides components for **just-in-time (JIT) decryption*** of code in encrypted sections, enabling encrypted code to run on demand while standard, non-encrypted code continues to execute normally. It also includes demonstration code as a proof of concept.  
 
 #### Core Class: Tracer
 
-The central component of the solution is the *Tracer* class. When activated, it enables execution of protected code in the *.prot* section; deactivating it restores normal code execution.
+The central component of the solution is the *Tracer* class. Activating it via the *StartTracing* method enables execution of protected code in an encrypted section, while deactivating it with *StopTracing* restores normal code execution.
+
+#### Demo Code
+
+As a demonstration, the following code is included:
+
+- The user can input text.
+- The input is then processed to compute its CRC32 value.
+
+Both functions are executed within the encrypted *.prot* section.
 
 ## Simplifications
 
