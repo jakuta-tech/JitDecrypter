@@ -52,21 +52,38 @@ void ProtectedClass::ProtectedMethod()
 ```
 This ensures that the instrumentation is preserved and the code executes as intended.
 
-### Encrypting the code
-
-Once the target executable has been built, encryption is applied to the designated code sections (e.g., *.prot*) using an additional application.
-
 ### Just-In-Time Decryption
 
 All components required for just-in-time decryption are encapsulated within the *Tracer* class. The functionality can be activated via the *StartTracing* method and deactivated using *StopTracing*. This approach minimizes the visible overhead within the actual source code logic.
 
+```cpp
+// Tracing protected section .prot (protected methods from .prot may be called)
+Tracer::Instance().StartTracing(protectedSection, textSection);
+ProtectedClass* protectedClass = new ProtectedClass();
+protectedClass->ProtectedMethod();
+delete protectedClass;
+Tracer::Instance().StopTracing();
+```
+
 **StartTracing**
 
-- Activates tracing and allows the execution of protected code within a protected section.  
+- Activates tracing and allows the execution of protected code within a protected section (*.prot* in the provided example).  
   
 **StopTracing**
 
 - Deactivates tracing, disabling execution of protected code and allowing unprotected code to be executed again.
+
+**ProtectedClass**
+
+- An encrypted class that is linked into the *.prot* section.
+  
+**ProtectedMethod**
+
+- An encrypted method that is linked into the *.prot* section.
+
+### Encrypting the code
+
+Once the target executable has been built, encryption is applied to the designated code section (e.g., *.prot*) using the *Builder* application, which is also part of the solution. (see below: **Builder Project**)
 
 ## Solution Overview
 
@@ -86,21 +103,7 @@ Both functions are executed within the encrypted *.prot* section.
 
 #### Core Class: Tracer
 
-The central component of the solution is the *Tracer* class. When activated, it enables execution of protected code in the *.prot* section:
-
-```cpp
-// Tracing protected section .prot (protected methods from .prot may be called)
-Tracer::Instance().StartTracing(protectedSection, textSection);
-ProtectedClass* protectedClass = new ProtectedClass();
-protectedClass->ProtectedMethod();
-delete protectedClass;
-Tracer::Instance().StopTracing();
-```
-Explanation of the steps:
-- **StartTracing**: Initializes the tracing mechanism for the protected section, enabling it for execution.
-- **ProtectedClass**: An encrypted class that is linked into the *.prot* section.
-- **ProtectedMethod**: An encrypted method that is linked into the *.prot* section.
-- **StopTracing**: Terminates the tracing session, ensuring proper cleanup. Afterwards, regular, unencrypted code can be executed again.
+The central component of the solution is the *Tracer* class. When activated, it enables execution of protected code in the *.prot* section; deactivating it restores normal code execution.
 
 ## Simplifications
 
