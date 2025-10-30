@@ -94,7 +94,7 @@ Once the target executable has been built, encryption is applied to the designat
 
 ### JitDecrypter Project
 
-This project provides components for **just-in-time (JIT) decryption*** of code in encrypted sections, enabling encrypted code to run on demand while standard, non-encrypted code continues to execute normally. It also includes demonstration code as a proof of concept.  
+This project provides components for **just-in-time (JIT) decryption** of code in encrypted sections, enabling encrypted code to run on demand while standard, non-encrypted code continues to execute normally. It also includes demonstration code as a proof of concept.  
 
 #### Core Class: Tracer
 
