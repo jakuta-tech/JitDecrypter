@@ -1,7 +1,7 @@
 # Fatmike's Just-In-Time Decrypter
 
 A just-in-time decrypter for Windows executables (x86 and x64) that provides real-time, instruction-level decryption of encrypted code sections. It enhances runtime protection against both static and dynamic analysis by decrypting only the instruction about to be executed.  
-Through post-build encryption and a core *Tracer* class managing secure execution, it makes reverse engineering and debugging harder by obscuring code flow and preventing easy inspection of decrypted instructions.
+Through post-build encryption and a core *Tracer* class managing secure execution, it makes reverse engineering and debugging harder by obscuring code flow and preventing easy inspection of decrypted instructions.  
 
 **Keywords**:  
 Just-In-time Decrypter, Single-Instruction Decrypter, Decrypter, Protector, Code Section, PE, Portable Executable, EXE, Windows
@@ -17,6 +17,8 @@ For simplicity, this implementation operates on 16-byte blocks, but the underlyi
 - Just-in-time decryption of individual assembly instructions, precisely at the moment of execution 
 
 ## Concept
+
+Some of the used concepts will be familiar to anyone who has seen my [Nanomites](https://github.com/Fatmike-GH/Nanomites) implementation.
 
 ### Marking code for encryption
 
