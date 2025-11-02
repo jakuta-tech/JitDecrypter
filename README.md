@@ -144,7 +144,7 @@ In this conceptual solution it is unsatisfactory that the user must manage not o
 
   ### Implementation
 
-  As proof of concept these additional considerations were implemented in some of my crackmes:
+  These ideas were implemented as a proof of concept in some of my crackmes. The protector uses a concept similar to my packer [Fatpack](https://github.com/Fatmike-GH/Fatpack) and relies on my [manual mapper ](https://github.com/Fatmike-GH/PELoader).  
   
 **crackmes.one**
   - [Fatmike's Crackme #5](https://crackmes.one/crackme/66ca5b91b899a3b9dd02af52)
