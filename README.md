@@ -9,7 +9,7 @@ Just-In-time Decrypter, Single-Instruction Decrypter, Decrypter, Protector, Code
 ## Motivation
 
 Conventional methods for encrypted code execution typically decrypt entire code sections at once, leaving the complete plaintext code exposed in memory. This project demonstrates an alternative technique: the just-in-time (JIT) decryption of single instructions immediately prior to their execution.  
-For simplicity, this implementation operates on 16-byte blocks, but the underlying implementation is fully capable of true single-instruction decryption, as demonstrated in some of my crackmes (see below).
+For simplicity, this implementation operates on 16-byte blocks, but the underlying implementation is fully capable of true single-instruction decryption.
 
 ## Requirements
 
