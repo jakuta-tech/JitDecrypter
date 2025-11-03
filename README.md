@@ -130,28 +130,3 @@ For simplicity, the current implementation decrypts code in fixed 16-byte blocks
 For true single-instruction decryption, *Builder.exe* should generate metadata for each RVA in the protected code section. The metadata should contain the RVA and the corresponding instruction length for every instruction in the protected section. Instruction lengths can be determined using a length-disassembler engine (LDE) or a disassembler such as [Zydis](https://github.com/zyantific/zydis).
 
 Afterwards *Builder.exe* could embed the metadata in the target’s resources or in an additional section (so *JitDecrypter.exe* can read it at runtime).
-
-## Additional Considerations
-
-In this conceptual solution it is unsatisfactory that the user must manage not only the sections to be encrypted but also the invocation of the *Tracer* class. In a production-ready implementation, this responsibility could be delegated to a separate *Protector* application:
-
-**Target**
-  - Within the *Target* code, only the sections intended for encryption need to be marked.  
-  
-**Protector**
-  - The *Protector* wraps the *Target* with a loader stub capable of loading the *Target* via manual mapping.
-  - By loading the *Target* itself, the loader stub gains full control and can apply the *Tracer* to the encrypted sections of the *Target* automatically.  
-  
-  This design simplifies usage for the developer and centralizes protection responsibilities within the Protector application.
-
-  ### Implementation
-
-  These ideas were implemented as a proof of concept in some of my crackmes. The protector uses a concept similar to my packer [Fatpack](https://github.com/Fatmike-GH/Fatpack) and relies on my [manual mapper ](https://github.com/Fatmike-GH/PELoader).  
-  
-**crackmes.one**
-  - [Fatmike's Crackme #5](https://crackmes.one/crackme/66ca5b91b899a3b9dd02af52)
-  - [Fatmike's Crackme #7](https://crackmes.one/crackme/67814b594d850ac5f7dc4fc9)  
-  
-**crackmy.app**
-  - [Fatmike's Crackme #5](https://crackmy.app/crackmes/fatmike-s-crackme-5-by-fatmike-46575)
-  - [Fatmike's Crackme #7](https://crackmy.app/crackmes/fatmike-s-crackme-7-2025-2634)
